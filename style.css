@@ -38,11 +38,11 @@ p {
 
 #sticky {
   width:100%;
-  height:40px;
-  padding-top:10px;
+  height:20px;
+  padding-top:6px;
   color: #E8B80C;
   background-color: green;
-  font-size:28px;
+  font-size:16px;
   text-align: center;
   position: fixed; /*this is to keep it at the bottom*/
   bottom:0;          /*to the bottom of the body/page*/
