@@ -25,12 +25,12 @@ function Images(name) {
 for (var i = 0; i < images.length; i++){
   imagesArray.push(new Images(images[i]));
 }
-console.log(imagesArray);
+//console.log(imagesArray);
 
 //this is for the random generator. Will choose different number each time
 function randGen(){
   var rndG =  Math.floor(Math.random() * imagesArray.length);
-  console.log('random #', rndG);
+  //console.log('random #', rndG);
 
   return rndG;
 }
@@ -90,7 +90,7 @@ function Tracker(name, filepath) {
   this.filepath = filepath;
   this.totalClicks = 0;
 }
-
+//this will keep a counter for each image for every click
 image1.addEventListener('click', function() {
   counter++;
   var src = this.getAttribute('src');
@@ -102,8 +102,13 @@ image1.addEventListener('click', function() {
   document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
   console.log('image src:', src);
   console.log('total image1 clicks:', counter);
+  imageGenerated2 = newRandom();
+  document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
+  imageGenerated3 = newRandom();
+  document.getElementById('image3').src = 'assets/' + images[imageGenerated3] + '.jpg';
 });
 
+//this will keep a counter for each image for every click
 image2.addEventListener('click', function() {
   counter++;
   var src = this.getAttribute('src');
@@ -113,8 +118,14 @@ image2.addEventListener('click', function() {
   document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
   console.log('image src:', src);
   console.log('total image2 clicks:', counter);
+  imageGenerated1 = newRandom();
+  document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
+  imageGenerated3 = newRandom();
+  document.getElementById('image3').src = 'assets/' + images[imageGenerated3] + '.jpg';
+
 });
 
+//this will keep a counter for each image for every click
 image3.addEventListener('click', function() {
   counter++;
   var src = this.getAttribute('src');
@@ -124,7 +135,8 @@ image3.addEventListener('click', function() {
   document.getElementById('image3').src = 'assets/' + images[imageGenerated3] + '.jpg';
   console.log('image src:', src);
   console.log('total image3 clicks:', counter);
+  imageGenerated2 = newRandom();
+  document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
+  imageGenerated1 = newRandom();
+  document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
 });
-
-// TODO: Create method to generate image path "assets/" + images... + '.jpg'
-// The method receives the index as parameter and returns complete path
