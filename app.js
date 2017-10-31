@@ -91,7 +91,16 @@ function Tracker(name, filepath) {
   this.totalClicks = 0;
 }
 //this will keep a counter for each image for every click
+
+
+
 image1.addEventListener('click', function() {
+  if(counter === 25) {
+    alert('Thanks for your participation');
+
+    return;
+  }
+
   counter++;
   var src = this.getAttribute('src');
   // Here the add 1 to the image account vote
@@ -110,6 +119,11 @@ image1.addEventListener('click', function() {
 
 //this will keep a counter for each image for every click
 image2.addEventListener('click', function() {
+  if(counter === 25) {
+    alert('Thanks for your participation');
+
+    return;
+  }
   counter++;
   var src = this.getAttribute('src');
   imagesVotes[imageGenerated2] = imagesVotes[imageGenerated2] + 1;
@@ -127,6 +141,11 @@ image2.addEventListener('click', function() {
 
 //this will keep a counter for each image for every click
 image3.addEventListener('click', function() {
+  if(counter === 25) {
+    alert('Thanks for your participation');
+
+    return;
+  }
   counter++;
   var src = this.getAttribute('src');
   imagesVotes[imageGenerated3] = imagesVotes[imageGenerated3] + 1;
