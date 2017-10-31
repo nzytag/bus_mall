@@ -54,14 +54,43 @@ numbGenerator();
 
 
 
+var counter = 0;
+
+var image1 = document.getElementById('image1');
+var image2 = document.getElementById('image2');
+var image3 = document.getElementById('image3');
+
+function Tracker(name, filepath) {
+  this.name = name;
+  this.filepath = filepath;
+  this.totalClicks = 0;
+}
+
+image1.addEventListener('click', function() {
+  counter++;
+  var src = this.getAttribute('src');
+  console.log('image src:', src);
+  console.log('total image1 clicks:', counter);
+});
+
+image2.addEventListener('click', function() {
+  counter++;
+  var src = this.getAttribute('src');
+  console.log('image src:', src);
+  console.log('total image2 clicks:', counter);
+});
+image3.addEventListener('click', function() {
+  counter++;
+  var src = this.getAttribute('src');
+  console.log('image src:', src);
+  console.log('total image3 clicks:', counter);
+});
 
 
-
-
-
-
-
-
+function changeImage(){
+  var img = write.document('imagesArray');
+  img.src = imagesArray();
+}
 
 
 
