@@ -85,26 +85,3 @@ image3.addEventListener('click', function() {
   console.log('image src:', src);
   console.log('total image3 clicks:', counter);
 });
-
-
-function changeImage(){
-  var img = write.document('imagesArray');
-  img.src = imagesArray();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-// for (var i = 0; i < imagesArray.lenght; i++) {
-//   imagesArray[i].addEventListener('click', function{
-//
-//   });
-// }
