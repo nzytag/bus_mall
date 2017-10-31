@@ -9,7 +9,6 @@ Assignment is to build a webapp for Puget Sound users. This app will have to dis
 Dev side:
 I built a front end page containing the name of the site and the images.
 
-
 My website works now. It displays random images and keeps a tally of the clicks on each image.
 
 Next step would be display the results of the most clicked image after a round of (insert number here) clicks.
