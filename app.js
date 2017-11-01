@@ -97,6 +97,7 @@ function Tracker(name, filepath) {
 image1.addEventListener('click', function() {
   if(counter === 25) {
     alert('Thanks for your participation');
+    // displayChart will call the function that wraps the chart
     displayChart();
     return;
   }
@@ -162,10 +163,12 @@ image3.addEventListener('click', function() {
   document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
 });
 
-
+//created a function that wraps the chart called displayChart that will be called after
+//the alert is displayed and that will generate the chart to appear in the front page
 function displayChart() {
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+  console.log(imagesVotes);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: images,
@@ -222,10 +225,14 @@ var myChart = new Chart(ctx, {
     options: {
       scales: {
         yAxes: [{
+          position: 'left',
+          scaleLabel: {
+            display: true,
+          },
           ticks: {
-            beginAtZero:true
-          }
-        }]
+            fixedStepSize: 1
+          },
+        }],
       }
     }
   });
