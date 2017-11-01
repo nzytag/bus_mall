@@ -1,6 +1,6 @@
 'use strict';
 
-var images = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+var images = ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog-duck', 'Dragon', 'Pen', 'Pet-sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'Usb', 'Water-can', 'Wine-glass'];
 var imagesArray = [];
 var imageGenerated1;
 var imageGenerated2;
@@ -64,7 +64,7 @@ function newRandom () {
   var candidate = 0;
   // While candidate is not valid, create a new candidate and compare
   // the value against other images
-  while (isValid == false) {
+  while (!isValid) {
     candidate = randGen();
     isValid = candidate != imageGenerated1 &&
         candidate != imageGenerated2 &&
@@ -97,7 +97,8 @@ function Tracker(name, filepath) {
 image1.addEventListener('click', function() {
   if(counter === 25) {
     alert('Thanks for your participation');
-
+    // displayChart will call the function that wraps the chart
+    displayChart();
     return;
   }
 
@@ -121,6 +122,7 @@ image1.addEventListener('click', function() {
 image2.addEventListener('click', function() {
   if(counter === 25) {
     alert('Thanks for your participation');
+    displayChart();
 
     return;
   }
@@ -143,6 +145,7 @@ image2.addEventListener('click', function() {
 image3.addEventListener('click', function() {
   if(counter === 25) {
     alert('Thanks for your participation');
+    displayChart();
 
     return;
   }
@@ -160,37 +163,77 @@ image3.addEventListener('click', function() {
   document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
 });
 
-
-
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['banana', 'smoking', 'cars'],
-    datasets: [{
-      label: 'top 3 choices',
-      data: [19, 12, 1],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-
-      ],
-      borderWidth: 2
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero:true
-        }
+//created a function that wraps the chart called displayChart that will be called after
+//the alert is displayed and that will generate the chart to appear in the front page
+function displayChart() {
+  console.log(imagesVotes);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: images,
+      datasets: [{
+        label: 'Number of votes per image',
+        data: imagesVotes,
+        backgroundColor: [
+          '#d3376f',
+          '#ecf0ae',
+          '#14df4a',
+          '#e5e4e4',
+          '#cae7e7',
+          '#ffe39f',
+          '#ff9362',
+          '#935428',
+          '#23a0a4',
+          '#dc4e7e',
+          '#fec449',
+          '#89cccf',
+          '#7f7f7f',
+          '#eeba30',
+          '#eff295',
+          '#2a9873',
+          '#2cc8cc',
+          '#5122c5',
+          '#89cccf',
+          '#dc4e7e',
+        ],
+        borderColor: [
+          '#2a9873',
+          '#2cc8cc',
+          '#5122c5',
+          '#7f7f7f',
+          '#89cccf',
+          '#eeba30',
+          '#eff295',
+          '#ebde4c',
+          '#ee4233',
+          '#fec449',
+          '#dc4e7e',
+          '#cae7e7',
+          '#ffe39f',
+          '#935428',
+          '#ff9362',
+          '#d3376f',
+          '#ecf0ae',
+          '#14df4a',
+          '#e5e4e4',
+          '#cae7e7',
+        ],
+        borderWidth: 2
       }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          position: 'left',
+          scaleLabel: {
+            display: true,
+          },
+          ticks: {
+            fixedStepSize: 1
+          },
+        }],
+      }
     }
-  }
-});
+  });
+}
