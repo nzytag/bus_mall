@@ -106,12 +106,13 @@ image1.addEventListener('click', function() {
   var src = this.getAttribute('src');
   // Here the add 1 to the image account vote
   imagesVotes[imageGenerated1] = imagesVotes[imageGenerated1] + 1;
-  console.log('Image ' + images[imageGenerated1] + ' has ' + imagesVotes[imageGenerated1] + ' votes');
+  saveToPage ();
+  //console.log('Image ' + images[imageGenerated1] + ' has ' + imagesVotes[imageGenerated1] + ' votes');
   // We generate a number and update the src of the respective image object
   imageGenerated1 = newRandom();
   document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
-  console.log('image src:', src);
-  console.log('total image1 clicks:', counter);
+  //console.log('image src:', src);
+  //console.log('total image1 clicks:', counter);
   imageGenerated2 = newRandom();
   document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
   imageGenerated3 = newRandom();
@@ -129,11 +130,12 @@ image2.addEventListener('click', function() {
   counter++;
   var src = this.getAttribute('src');
   imagesVotes[imageGenerated2] = imagesVotes[imageGenerated2] + 1;
-  console.log('Image ' + images[imageGenerated2] + ' has ' + imagesVotes[imageGenerated2] + ' votes');
+  saveToPage();
+  //console.log('Image ' + images[imageGenerated2] + ' has ' + imagesVotes[imageGenerated2] + ' votes');
   imageGenerated2 = newRandom();
   document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
-  console.log('image src:', src);
-  console.log('total image2 clicks:', counter);
+  //console.log('image src:', src);
+  //console.log('total image2 clicks:', counter);
   imageGenerated1 = newRandom();
   document.getElementById('image1').src = 'assets/' + images[imageGenerated1] + '.jpg';
   imageGenerated3 = newRandom();
@@ -152,11 +154,12 @@ image3.addEventListener('click', function() {
   counter++;
   var src = this.getAttribute('src');
   imagesVotes[imageGenerated3] = imagesVotes[imageGenerated3] + 1;
-  console.log('Image ' + images[imageGenerated3] + ' has ' + imagesVotes[imageGenerated3] + ' votes');
+  saveToPage();
+  //console.log('Image ' + images[imageGenerated3] + ' has ' + imagesVotes[imageGenerated3] + ' votes');
   imageGenerated3 = newRandom();
   document.getElementById('image3').src = 'assets/' + images[imageGenerated3] + '.jpg';
-  console.log('image src:', src);
-  console.log('total image3 clicks:', counter);
+  //console.log('image src:', src);
+  //console.log('total image3 clicks:', counter);
   imageGenerated2 = newRandom();
   document.getElementById('image2').src = 'assets/' + images[imageGenerated2] + '.jpg';
   imageGenerated1 = newRandom();
@@ -236,4 +239,21 @@ function displayChart() {
       }
     }
   });
+}
+//this function is to make an array with the votes per images
+function onLoadPage () {
+  if (!localStorage.imagesVotes) return;
+  var storedVotes = localStorage.imagesVotes.split(',');
+  for ( var i = 0; i < storedVotes.length; i++ ) {
+    storedVotes[i] = parseInt(storedVotes[i]);
+  }
+  imagesVotes = storedVotes;
+}
+//this will load the info when the page loads
+window.addEventListener('onload', onLoadPage);
+
+// this function will save the imagesVotes to the local Storage
+function saveToPage () {
+  localStorage.imagesVotes = imagesVotes;
+
 }
