@@ -6,6 +6,17 @@ var imageGenerated1;
 var imageGenerated2;
 var imageGenerated3;
 
+if (localStorage.imagesVotes) {
+  alert('Welcome Back');
+  var storedVotes = localStorage.imagesVotes.split(',');
+  for ( var i = 0; i < storedVotes.length; i++ ) {
+    storedVotes[i] = parseInt(storedVotes[i]);
+  }
+  imagesVotes = storedVotes;
+  // displayChart will call the function that wraps the chart
+  displayChart();
+}
+
 // We create a global array with 0's to tally the votes
 var imagesVotes = [];
 for (i = 0; i < images.length; i++) { // Check how we use images.lenght property
@@ -35,7 +46,6 @@ function randGen(){
   return rndG;
 }
 
-
 function numbGenerator () {
   imageGenerated1 = randGen();
   imageGenerated2 = randGen();
@@ -56,7 +66,6 @@ function numbGenerator () {
   }
 }
 numbGenerator();
-
 // Create a random number that is different of previous image indexes
 function newRandom () {
   // Initialize variables
@@ -78,7 +87,6 @@ var counter = 0;
 var image1 = document.getElementById('image1');
 var image2 = document.getElementById('image2');
 var image3 = document.getElementById('image3');
-
 // We already created 3 different index for each image
 // Now only load the image is left :)
 image1.src = 'assets/' + images[imageGenerated1] + '.jpg';
@@ -241,19 +249,20 @@ function displayChart() {
   });
 }
 //this function is to make an array with the votes per images
-function onLoadPage () {
-  if (!localStorage.imagesVotes) return;
-  var storedVotes = localStorage.imagesVotes.split(',');
-  for ( var i = 0; i < storedVotes.length; i++ ) {
-    storedVotes[i] = parseInt(storedVotes[i]);
-  }
-  imagesVotes = storedVotes;
-}
+// function onLoadPage () {
+//   if (!localStorage.imagesVotes) return;
+//   var storedVotes = localStorage.imagesVotes.split(',');
+//   for ( var i = 0; i < storedVotes.length; i++ ) {
+//     storedVotes[i] = parseInt(storedVotes[i]);
+//   }
+//   imagesVotes = storedVotes;
+//   console.log('PREPOP', localStorage)
+// }
+// onLoadPage();
 //this will load the info when the page loads
-window.addEventListener('onload', onLoadPage);
+// window.addEventListener('onload', onLoadPage);
 
 // this function will save the imagesVotes to the local Storage
 function saveToPage () {
   localStorage.imagesVotes = imagesVotes;
-
 }
